@@ -60,12 +60,32 @@ function render() {
                       <p>${book.pages}</p>
                       <p>${(book.read) ? "Read" : "Not read"}</p>
                       <button class="remove" onclick="removeBook(${i})"> X </button>
+                      <button class="is-read" onclick="changeReadStatus(${i})"> Read </button>
+                      
                       `;
 
     cardsContainer.appendChild(card);
     
   }
 
+}
+
+function changeReadStatus(index) {
+  if (myLibrary[index].read == false) {
+    myLibrary[index].read = true;
+  }
+
+  else {
+    myLibrary[index].read = false;
+  }
+
+  cardsContainer.innerHTML = '';
+  render();
+
+
+  
+
+  
 }
 
 function removeBook(index) {
@@ -79,5 +99,3 @@ AddBookButton.addEventListener('click', () => {
   render();
 
 })
-
-
